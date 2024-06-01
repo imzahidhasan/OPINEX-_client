@@ -1,12 +1,17 @@
+import React from 'react'
+import Navbar from './Components/Navbar'
+import { Outlet } from 'react-router-dom'
+import Footer from './Components/Footer'
 
-import './App.css'
-
-function App() {
-
+const App = () => {
   return (
-    <>
-      <div className='text-5xl text-red-600 font-bold'>this is a text inside a div</div>
-    </>
+    <div>
+      <Navbar />
+      <div className='container mx-auto'>
+        <Outlet />
+      </div>
+      <Footer />
+    </div>
   )
 }
 
