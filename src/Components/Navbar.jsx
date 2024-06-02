@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../Firebase/useAuth';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const { user, logOut, setUser, setUserRole } = useAuth()
+    const handleLogOut = () => {
+        logOut()
+        setUser('')
+        setUserRole('')
+    }
     return (
         <nav className="bg-white shadow-md">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,21 +61,32 @@ const Navbar = () => {
                             >
                                 Contact
                             </NavLink>
+                            <NavLink
+                                to="/dashboard"
+                                className={({ isActive }) => isActive ? `text-indigo-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-indigo-500`
+                                    :
+                                    'text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium hover:border-indigo-500'}
+                            >
+                                Dashboard
+                            </NavLink>
                         </div>
                     </div>
                     <div className="hidden sm:ml-6 sm:flex sm:items-center">
-                        <Link
-                            to="/login"
-                            className="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium hover:border-indigo-500"
-                        >
-                            Login
-                        </Link>
-                        <Link
-                            to="/register"
-                            className="ml-4 bg-indigo-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700"
-                        >
-                            Register
-                        </Link>
+                        {
+                            user ? <button onClick={handleLogOut} className="ml-4 bg-indigo-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700">Log Out</button> : <>
+                                <Link
+                                    to="/login"
+                                    className="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium hover:border-indigo-500"
+                                >
+                                    Login
+                                </Link>
+                                <Link
+                                    to="/register"
+                                    className="ml-4 bg-indigo-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700"
+                                >
+                                    Register
+                                </Link></>
+                        }
                     </div>
                     <div className="-mr-2 flex items-center sm:hidden">
                         <button

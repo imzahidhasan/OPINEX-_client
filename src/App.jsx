@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <div className='container mx-auto'>
+      <div className='container mx-auto min-h-96'>
         <Outlet />
       </div>
       <Footer />

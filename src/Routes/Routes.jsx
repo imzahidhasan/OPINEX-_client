@@ -8,6 +8,8 @@ import SurveyPage from "../Pages/SurveyPage";
 import AboutPage from "../Pages/AboutPage";
 import ContactPage from "../Pages/ContactPage";
 import PricingPage from "../Pages/PricingPage";
+import SurveyDetailsPage from "../Pages/SurveyDetailsPage";
+import DashBoardPage from "../Pages/DashBoardPage";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
             {
                 path: 'contact',
                 element: <ContactPage />
+            },
+            {
+                path: 'survey/details',
+                element:<SurveyDetailsPage/>
+            },
+            {
+                path: '/dashboard',
+                element:<DashBoardPage/>
             }
         ]
     },
