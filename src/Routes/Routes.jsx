@@ -10,6 +10,9 @@ import ContactPage from "../Pages/ContactPage";
 import PricingPage from "../Pages/PricingPage";
 import SurveyDetailsPage from "../Pages/SurveyDetailsPage";
 import DashBoardPage from "../Pages/DashBoardPage";
+import CreateSurveyPage from "../Pages/CreateSurveyPage";
+import UpdateSurveyPage from "../Pages/UpdateSurveyPage";
+import AllSurveyPage from "../Pages/AllSurveyPage";
 
 const router = createBrowserRouter([
     {
@@ -46,12 +49,26 @@ const router = createBrowserRouter([
                 element: <ContactPage />
             },
             {
-                path: 'survey/details',
-                element:<SurveyDetailsPage/>
+                path: 'survey/details/:id',
+                element: <SurveyDetailsPage />
             },
             {
-                path: '/dashboard',
-                element:<DashBoardPage/>
+                path: 'dashboard',
+                element: <DashBoardPage />,
+                children: [
+                    {
+                        path: 'create',
+                        element: <CreateSurveyPage />
+                    },
+                    {
+                        path: 'update',
+                        element: <UpdateSurveyPage />
+                    },
+                    {
+                        path: 'all_surveys',
+                        element:<AllSurveyPage/>
+                    }
+                ]
             }
         ]
     },
