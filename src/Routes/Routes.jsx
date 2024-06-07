@@ -14,6 +14,10 @@ import CreateSurveyPage from "../Pages/CreateSurveyPage";
 import UpdateSurveyPage from "../Pages/UpdateSurveyPage";
 import AllSurveyPage from "../Pages/AllSurveyPage";
 import IndividualSurveyDetails from "../Pages/IndividualSurveyDetails";
+import AdminDashboard from "../Pages/AdminDashboard";
+import ManageUsers from "../Pages/ManageUsers";
+import ManageSurveys from "../Pages/ManageSurveys";
+import ManagePayments from "../Pages/ManagePayments";
 
 const router = createBrowserRouter([
     {
@@ -80,7 +84,22 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path:'/dashboard/admin'
+        path: '/dashboard/admin',
+        element: <AdminDashboard />,
+        children: [
+            {
+                path: 'users',
+                element:<ManageUsers/>
+            },
+            {
+                path: 'surveys',
+                element:<ManageSurveys/>
+            },
+            {
+                path: 'payments',
+                element:<ManagePayments/>
+            }
+        ]
     }
 
 ])
