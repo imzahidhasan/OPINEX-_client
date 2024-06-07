@@ -13,6 +13,7 @@ import DashBoardPage from "../Pages/DashBoardPage";
 import CreateSurveyPage from "../Pages/CreateSurveyPage";
 import UpdateSurveyPage from "../Pages/UpdateSurveyPage";
 import AllSurveyPage from "../Pages/AllSurveyPage";
+import IndividualSurveyDetails from "../Pages/IndividualSurveyDetails";
 
 const router = createBrowserRouter([
     {
@@ -51,7 +52,8 @@ const router = createBrowserRouter([
             {
                 path: 'survey/details/:id',
                 element: <SurveyDetailsPage />
-            }
+            },
+            
         ],
         
     },
@@ -70,8 +72,15 @@ const router = createBrowserRouter([
             {
                 path: 'surveys',
                 element: <AllSurveyPage />
+            },
+            {
+                path: 'surveys/:id',
+                element:<IndividualSurveyDetails/>
             }
         ]
+    },
+    {
+        path:'/dashboard/admin'
     }
 
 ])

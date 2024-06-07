@@ -3,7 +3,8 @@ import useAuth from '../Firebase/useAuth'
 import { NavLink, Outlet } from 'react-router-dom'
 
 const DashBoardPage = () => {
-  const { userRole } = useAuth()  
+  const { userRole } = useAuth()
+  
   return (
     <div className='flex container mx-auto'>
       <div className="bg-gray-100 w-[20%] min-h-screen">

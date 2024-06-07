@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import api from '../hooks/useAxios'
 import { useForm } from 'react-hook-form'
 import useAuth from '../Firebase/useAuth'
+import Swal from 'sweetalert2'
 
 const SurveyDetailsPage = () => {
   const { id } = useParams()
@@ -34,7 +35,13 @@ const SurveyDetailsPage = () => {
       userName: user?.displayName,
     }
     const result = await api.put(`/vote/${id}`, voteInfo)
-    console.log(result.data)
+    if (result.data.modifiedCount>0) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Successful',
+        text:'your vote counted successfully'
+      })
+    }
   };
   return (
     <div>
