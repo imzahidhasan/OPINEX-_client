@@ -51,27 +51,28 @@ const router = createBrowserRouter([
             {
                 path: 'survey/details/:id',
                 element: <SurveyDetailsPage />
+            }
+        ],
+        
+    },
+    {
+        path: '/dashboard/surveyor',
+        element: <DashBoardPage />,
+        children: [
+            {
+                path: 'create',
+                element: <CreateSurveyPage />
             },
             {
-                path: 'dashboard',
-                element: <DashBoardPage />,
-                children: [
-                    {
-                        path: 'create',
-                        element: <CreateSurveyPage />
-                    },
-                    {
-                        path: 'update',
-                        element: <UpdateSurveyPage />
-                    },
-                    {
-                        path: 'all_surveys',
-                        element:<AllSurveyPage/>
-                    }
-                ]
+                path: 'update/:id',
+                element: <UpdateSurveyPage />
+            },
+            {
+                path: 'surveys',
+                element: <AllSurveyPage />
             }
         ]
-    },
+    }
 
 ])
 

@@ -3,26 +3,25 @@ import useAuth from '../Firebase/useAuth'
 import { NavLink, Outlet } from 'react-router-dom'
 
 const DashBoardPage = () => {
-  const { userRole } = useAuth()
-  
+  const { userRole } = useAuth()  
   return (
-    <div className='flex'>
+    <div className='flex container mx-auto'>
       <div className="bg-gray-100 w-[20%] min-h-screen">
-        <aside className="bg-white h-screen shadow">
+        <aside className="bg-blue-400 h-screen shadow">
           <nav className="p-4">
             <ul className="space-y-2">
               <li>
-                <NavLink to={'/dashboard/create'} className={({ isActive }) => isActive ? 'text-blue-500 font-bold' : 'text-gray-600 font-bold'}>
+                <NavLink to={'/'} className={({ isActive }) => isActive ? 'text-blue-500 font-bold' : 'text-gray-600 font-bold'}>
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={`/dashboard/surveyor/create`} className={({ isActive }) => isActive ? 'text-blue-500 font-bold' : 'text-gray-600 font-bold'}>
                   Create Survey
                 </NavLink>
               </li>
               <li>
-                <NavLink to={'/dashboard/update'} className={({ isActive }) => isActive ? 'text-blue-500 font-bold' : 'text-gray-600 font-bold'}>
-                  Update
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={'/dashboard/all_surveys'} className={({ isActive }) => isActive ? 'text-blue-500 font-bold' : 'text-gray-600 font-bold'}>
+                <NavLink to={'/dashboard/surveyor/surveys'} className={({ isActive }) => isActive ? 'text-blue-500 font-bold' : 'text-gray-600 font-bold'}>
                   All Surveys
                 </NavLink>
               </li>

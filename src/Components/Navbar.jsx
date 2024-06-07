@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../Firebase/useAuth';
 
 const Navbar = () => {
+    const { userRole } = useAuth()
     const [isOpen, setIsOpen] = useState(false);
     const { user, logOut, setUser, setUserRole } = useAuth()
     const handleLogOut = () => {
@@ -62,7 +63,7 @@ const Navbar = () => {
                                 Contact
                             </NavLink>
                             <NavLink
-                                to="/dashboard"
+                                to={`/dashboard/${userRole}`}
                                 className={({ isActive }) => isActive ? `text-indigo-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-indigo-500`
                                     :
                                     'text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium hover:border-indigo-500'}

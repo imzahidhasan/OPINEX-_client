@@ -2,13 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const SurveyCard = ({ survey }) => {
-    const totalVotes = survey.questions.reduce((prev, curr) => prev + curr.yesCount + curr.noCount, 0)
-
     return (
         <div>
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <div className="px-6 py-4">
-                    <span className="bg-gray-200 text-gray-800 text-sm px-2 py-1 rounded-lg">
+                    <span className="bg-gray-200 text-gray-800 text-xs font-bold px-2 py-1 rounded-lg">
                         {survey?.category}
                     </span>
                     <div className="flex items-center justify-between mb-2">
@@ -31,7 +29,7 @@ const SurveyCard = ({ survey }) => {
                                 clipRule="evenodd"
                             />
                         </svg>
-                        <span className="text-gray-700 text-sm ml-2">Votes:{totalVotes}</span>
+                        <span className="text-gray-700 text-sm ml-2">Votes: {survey.yesCount+survey.noCount}</span>
                     </div>
                     <Link to={`/survey/details/${survey._id}`}>
                         <button className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
