@@ -18,6 +18,10 @@ import AdminDashboard from "../Pages/AdminDashboard";
 import ManageUsers from "../Pages/ManageUsers";
 import ManageSurveys from "../Pages/ManageSurveys";
 import ManagePayments from "../Pages/ManagePayments";
+import UserDashboard from "../Pages/UserDashboard";
+import UserParticipatedPage from "../Pages/UserParticipatedPage";
+import MyReportPage from "../Pages/MyReportPage";
+import UserComments from "../Pages/UserComments";
 
 const router = createBrowserRouter([
     {
@@ -98,6 +102,24 @@ const router = createBrowserRouter([
             {
                 path: 'payments',
                 element:<ManagePayments/>
+            }
+        ]
+    },
+    {
+        path: '/dashboard/user',
+        element: <UserDashboard />,
+        children: [
+            {
+                path: 'surveys',
+                element:<UserParticipatedPage/>
+            },
+            {
+                path: 'my-reports',
+                element:<MyReportPage/>
+            },
+            {
+                path: 'comments',
+                element:<UserComments/>
             }
         ]
     }
