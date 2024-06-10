@@ -62,14 +62,14 @@ const Navbar = () => {
                             >
                                 Contact
                             </NavLink>
-                            <NavLink
+                            {user&&<NavLink
                                 to={`/dashboard/${userRole}`}
                                 className={({ isActive }) => isActive ? `text-indigo-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-indigo-500`
                                     :
                                     'text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium hover:border-indigo-500'}
                             >
                                 Dashboard
-                            </NavLink>
+                            </NavLink>}
                         </div>
                     </div>
                     <div className="hidden sm:ml-6 sm:flex sm:items-center">

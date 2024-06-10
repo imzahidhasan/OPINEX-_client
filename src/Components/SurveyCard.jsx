@@ -13,7 +13,7 @@ const SurveyCard = ({ survey }) => {
                         <h3 className="text-xl font-semibold">{survey.title}</h3>
 
                     </div>
-                    <p className="text-gray-700 text-base">{survey.description}</p>
+                    <p className="text-gray-700 text-base">{`${survey.description.slice(0, 80) }...`}</p>
                 </div>
                 <div className="px-6 py-4 bg-gray-100 flex items-center justify-between">
                     <div className="flex items-center">

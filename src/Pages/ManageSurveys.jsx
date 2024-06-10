@@ -64,7 +64,7 @@ const SurveyRow = ({ survey, refetch }) => {
   return (
     <tr className="hover:bg-gray-100">
       <td className="py-2 px-4 border-b">{survey.title}</td>
-      <td className="py-2 px-4 border-b">{survey.description}</td>
+      <td className="py-2 px-4 border-b">{`${survey.description.slice(0,40)}...`}</td>
       <td className="py-2 px-4 border-b">
         <div className="relative">
           <select

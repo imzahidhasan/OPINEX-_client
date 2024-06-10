@@ -61,9 +61,9 @@ const router = createBrowserRouter([
                 path: 'survey/details/:id',
                 element: <SurveyDetailsPage />
             },
-            
+
         ],
-        
+
     },
     {
         path: '/dashboard/surveyor',
@@ -83,7 +83,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'surveys/:id',
-                element:<IndividualSurveyDetails/>
+                element: <IndividualSurveyDetails />
             }
         ]
     },
@@ -93,15 +93,15 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'users',
-                element:<ManageUsers/>
+                element: <ManageUsers />
             },
             {
                 path: 'surveys',
-                element:<ManageSurveys/>
+                element: <ManageSurveys />
             },
             {
                 path: 'payments',
-                element:<ManagePayments/>
+                element: <ManagePayments />
             }
         ]
     },
@@ -111,15 +111,15 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'surveys',
-                element:<UserParticipatedPage/>
+                element: <UserParticipatedPage />
             },
             {
                 path: 'my-reports',
-                element:<MyReportPage/>
+                element: <MyReportPage />
             },
             {
                 path: 'comments',
-                element:<UserComments/>
+                element: <UserComments />
             }
         ]
     }
@@ -127,3 +127,14 @@ const router = createBrowserRouter([
 ])
 
 export default router
+
+
+/**
+*admin
+admin@opinex.com
+pass:adminadmin
+
+surveyor
+surveyor@opinex.com
+pass:opinexsurveyor
+*/

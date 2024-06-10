@@ -5,6 +5,9 @@ const HomePage = () => {
     return (
         <div>
             <Hero />
+            <div>
+                
+            </div>
         </div>
     )
 }
