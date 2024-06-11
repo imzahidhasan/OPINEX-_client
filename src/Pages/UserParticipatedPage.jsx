@@ -6,14 +6,16 @@ import useAuth from '../Firebase/useAuth'
 const UserParticipatedPage = () => {
     const { user } = useAuth()
     const userInfo = { userName: user?.displayName, userEmail: user?.email }
-    const {data,isLoading, } = useQuery({
+    const { data, isLoading, } = useQuery({
         queryKey: ['participated_survey'],
         queryFn: async () => {
             const result = await api.post('/get_participated_survey', userInfo)
             return result.data
         }
     })
-    console.log(data);
+    if (isLoading) {
+        <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div>
+    }
     return (
         <div>
             <div className="overflow-x-auto">

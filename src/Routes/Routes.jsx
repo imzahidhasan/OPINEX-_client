@@ -106,7 +106,25 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/dashboard/user',
+        path: `/dashboard/user`,
+        element: <UserDashboard />,
+        children: [
+            {
+                path: 'surveys',
+                element: <UserParticipatedPage />
+            },
+            {
+                path: 'my-reports',
+                element: <MyReportPage />
+            },
+            {
+                path: 'comments',
+                element: <UserComments />
+            }
+        ]
+    },
+    {
+        path: `/dashboard/pro_user`,
         element: <UserDashboard />,
         children: [
             {

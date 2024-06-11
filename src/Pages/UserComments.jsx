@@ -16,7 +16,7 @@ const UserComments = () => {
   })
 
   if (isLoading) {
-    return <div>Loading...</div>
+    <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div>
   }
 
   if (isError) {

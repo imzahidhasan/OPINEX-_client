@@ -12,6 +12,9 @@ const ManageSurveys = () => {
       return res.data
     }
   })
+  if (isLoading) {
+    <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div>
+  }
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white">

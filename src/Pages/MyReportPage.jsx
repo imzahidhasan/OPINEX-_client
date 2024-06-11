@@ -13,7 +13,9 @@ const MyReportPage = () => {
       return result.data
     }
   })
-console.log(data);
+  if (isLoading) {
+    <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div>
+  }
   return (
     <div>
       <div className="overflow-x-auto">

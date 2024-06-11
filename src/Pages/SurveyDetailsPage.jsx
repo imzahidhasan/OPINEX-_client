@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 
 const SurveyDetailsPage = () => {
   const { id } = useParams();
-  const { user } = useAuth();
+  const { user ,userRole} = useAuth();
   const { data, isLoading, error, isError } = useQuery({
     queryKey: ['survey', id], // Include id in the query key for uniqueness
     queryFn: () => api.get(`/survey/${id}`).then(res => res.data),
@@ -66,7 +66,7 @@ const SurveyDetailsPage = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div>
   }
 
   if (isError) {
@@ -117,10 +117,10 @@ const SurveyDetailsPage = () => {
               </div>
               {errors.vote && <p className="text-red-600 text-sm mt-2">This field is required</p>}
             </div>
-            <div className='p-4'>
+            {userRole==='pro_user'&& <div className='p-4'>
               <label htmlFor="comment"> Comments</label>
               <textarea id='comment' {...register('comment')} placeholder='enter your comment here...' className='border-2 w-full p-4' />
-            </div>
+            </div>}
             <div className='p-4'>
               <button type="submit" className="block w-full p-2 bg-green-500 text-white rounded-md">
                 Submit

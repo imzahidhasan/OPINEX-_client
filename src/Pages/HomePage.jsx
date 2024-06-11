@@ -12,7 +12,7 @@ const HomePage = () => {
             return result.data
         }
     })
-    const { data: latest_survey } = useQuery({
+    const { data: latest_survey, isLoading: latest_Loading } = useQuery({
         queryKey: ['latest_survey'],
         queryFn: async () => {
             const result = await api.get('/get_latest_survey')
@@ -20,25 +20,30 @@ const HomePage = () => {
         }
     })
     console.log(latest_survey);
+
     return (
         <div className='bg-gray-100 p-2'>
             <Hero />
             <div className='my-4'>
                 <SectionHeading heading={'Features Surveys'} subheading={"Discover the unique features that make our surveys powerful and user-friendly"} />
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-                {
-                    data?.map((survey, index) => <SurveyCard key={index} survey={survey} />)
-                }
-            </div>
+            {
+                isLoading ? <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div> : <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+                    {
+                        data?.map((survey, index) => <SurveyCard key={index} survey={survey} />)
+                    }
+                </div>
+            }
             <div className='my-4'>
                 <SectionHeading heading={'Latest Surveys'} subheading={'Discover the most recent surveys added to our platform.'} />
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-                {
-                    latest_survey?.map((survey, index) => <SurveyCard key={index} survey={survey} />)
-                }
-            </div>
+            {latest_Loading ? <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div> :
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+                    {
+                        latest_survey?.map((survey, index) => <SurveyCard key={index} survey={survey} />)
+                    }
+                </div>
+            }
             <div className='my-6'>
                 <SectionHeading heading={'How It Works '} subheading={`Easily create, distribute, and analyze surveys with our platform. Here's how it works: `} />
             </div>
