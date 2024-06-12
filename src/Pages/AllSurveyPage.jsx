@@ -8,12 +8,15 @@ import { TfiWrite } from 'react-icons/tfi'
 
 const AllSurveyPage = () => {
   const { user } = useAuth()
-  const { data } = useQuery({
+  const { data ,isLoading} = useQuery({
     queryKey: ['surveys'], queryFn: async () => {
       return api.get(`/surveys/${user?.email}`)
     }
   })
   const surveys = data?.data
+  if (isLoading) {
+    return <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div>
+  }
   return (
     <div>
       <div className="max-w-4xl mx-auto mt-10">

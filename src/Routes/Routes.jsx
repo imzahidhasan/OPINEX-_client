@@ -24,6 +24,7 @@ import MyReportPage from "../Pages/MyReportPage";
 import UserComments from "../Pages/UserComments";
 import PaymentPage from "../Pages/PaymentPage";
 import PrivetRoute from "./PrivetRoute";
+import FeedbacksPage from "../Pages/FeedbacksPage";
 
 const router = createBrowserRouter([
     {
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
             {
                 path: 'surveys/:id',
                 element: <PrivetRoute> <IndividualSurveyDetails /></PrivetRoute>
+            },
+            {
+                path: 'feedbacks',
+                element: <PrivetRoute> <FeedbacksPage/> </PrivetRoute>
             }
         ]
     },

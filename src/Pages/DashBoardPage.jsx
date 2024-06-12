@@ -26,6 +26,11 @@ const DashBoardPage = () => {
                   All Surveys
                 </NavLink>
               </li>
+              <li>
+                <NavLink to={'/dashboard/surveyor/feedbacks'} className={({ isActive }) => isActive ? 'text-blue-500 font-bold' : 'text-gray-600 font-bold'}>
+                 Feedbacks
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </aside>
