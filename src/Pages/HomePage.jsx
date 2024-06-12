@@ -19,7 +19,6 @@ const HomePage = () => {
             return result.data
         }
     })
-    console.log(latest_survey);
 
     return (
         <div className='bg-gray-100 p-2'>

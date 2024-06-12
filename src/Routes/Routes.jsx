@@ -23,6 +23,7 @@ import UserParticipatedPage from "../Pages/UserParticipatedPage";
 import MyReportPage from "../Pages/MyReportPage";
 import UserComments from "../Pages/UserComments";
 import PaymentPage from "../Pages/PaymentPage";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
     {
@@ -72,77 +73,77 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard/surveyor',
-        element: <DashBoardPage />,
+        element: <PrivetRoute> <DashBoardPage /></PrivetRoute>,
         children: [
             {
                 path: 'create',
-                element: <CreateSurveyPage />
+                element: <PrivetRoute><CreateSurveyPage /></PrivetRoute>
             },
             {
                 path: 'update/:id',
-                element: <UpdateSurveyPage />
+                element: <PrivetRoute><UpdateSurveyPage /></PrivetRoute>
             },
             {
                 path: 'surveys',
-                element: <AllSurveyPage />
+                element: <PrivetRoute><AllSurveyPage /></PrivetRoute>
             },
             {
                 path: 'surveys/:id',
-                element: <IndividualSurveyDetails />
+                element: <PrivetRoute> <IndividualSurveyDetails /></PrivetRoute>
             }
         ]
     },
     {
         path: '/dashboard/admin',
-        element: <AdminDashboard />,
+        element: <PrivetRoute><AdminDashboard /></PrivetRoute>,
         children: [
             {
                 path: 'users',
-                element: <ManageUsers />
+                element: <PrivetRoute><ManageUsers /></PrivetRoute>
             },
             {
                 path: 'surveys',
-                element: <ManageSurveys />
+                element: <PrivetRoute><ManageSurveys /></PrivetRoute>
             },
             {
                 path: 'payments',
-                element: <ManagePayments />
+                element: <PrivetRoute><ManagePayments /></PrivetRoute>
             }
         ]
     },
     {
         path: `/dashboard/user`,
-        element: <UserDashboard />,
+        element: <PrivetRoute><UserDashboard /></PrivetRoute>,
         children: [
             {
                 path: 'surveys',
-                element: <UserParticipatedPage />
+                element: <PrivetRoute><UserParticipatedPage /></PrivetRoute>
             },
             {
                 path: 'my-reports',
-                element: <MyReportPage />
+                element: <PrivetRoute><MyReportPage /></PrivetRoute>
             },
             {
                 path: 'comments',
-                element: <UserComments />
+                element: <PrivetRoute><UserComments /></PrivetRoute>
             }
         ]
     },
     {
         path: `/dashboard/pro_user`,
-        element: <UserDashboard />,
+        element: <PrivetRoute><UserDashboard /></PrivetRoute>,
         children: [
             {
                 path: 'surveys',
-                element: <UserParticipatedPage />
+                element: <PrivetRoute><UserParticipatedPage /></PrivetRoute>
             },
             {
                 path: 'my-reports',
-                element: <MyReportPage />
+                element: <PrivetRoute><MyReportPage /></PrivetRoute>
             },
             {
                 path: 'comments',
-                element: <UserComments />
+                element: <PrivetRoute><UserComments /></PrivetRoute>
             }
         ]
     }
