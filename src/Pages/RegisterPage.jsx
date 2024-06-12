@@ -44,7 +44,6 @@ const RegisterPage = () => {
       const img_url = res.data.data.display_url;
 
       const userCredential = await createUser(email, password);
-      console.log(userCredential);
       if (userCredential.insertedId) {
         await UpdateProfile(name, img_url);
       }

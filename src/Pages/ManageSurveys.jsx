@@ -13,7 +13,7 @@ const ManageSurveys = () => {
     }
   })
   if (isLoading) {
-    <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div>
+    return <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div>
   }
   return (
     <div className="overflow-x-auto">
@@ -63,7 +63,6 @@ const SurveyRow = ({ survey, refetch }) => {
     }
     if (text) {
       const formData = { id: survey._id, status: selectedStatus, feedbackMessage: text };
-      console.log(formData);
       const result = await api.post("/update_survey_status", formData);
       if (result.data.modifiedCount > 0) {
         Swal.fire({

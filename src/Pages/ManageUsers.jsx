@@ -35,7 +35,7 @@ const ManageUsers = () => {
     };
 
     if (isLoading) {
-        return <h1>Loading...</h1>;
+        return <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div>
     }
 
     return (

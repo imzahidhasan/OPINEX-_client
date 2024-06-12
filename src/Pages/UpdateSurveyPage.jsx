@@ -23,7 +23,7 @@ const UpdateSurveyPage = () => {
     }
   })
   if (isLoading) {
-    return <h1>loading...</h1>
+    return <div className='h-screen flex justify-center items-center'><span className="loading loading-dots loading-lg"></span></div>
   }
   const { title, description, deadline, category, questionTitle, questionDescription } = data.data
   const onSubmit = async (data) => {
