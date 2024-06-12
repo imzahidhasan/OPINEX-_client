@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
     const { user } = useAuth();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const stripe = useStripe();
     const elements = useElements();
     const [clientSecret, setClientSecret] = useState("");
@@ -76,13 +76,38 @@ const CheckoutForm = () => {
         if (paymentIntent.status === 'succeeded') {
             Swal.fire({
                 icon: 'success',
-                text: 'your payment has successful',
+                text: 'Your payment was successful',
                 title: "Successful!"
-            })
+            });
             setPaymentSuccess(true);
             setError(null);
-            const result = await api.post(`/update_role/${user?.email}`, { role: 'pro_user' })
-                navigate('/')
+
+            // Save payment information to backend
+            try {
+                const paymentInfo = {
+                    paymentIntentId: paymentIntent.id,
+                    amount: paymentIntent.amount,
+                    currency: paymentIntent.currency,
+                    user: {
+                        email: user?.email,
+                        displayName: user?.displayName
+                    }
+                };
+
+                const response = await api.post('/save-payment', paymentInfo);
+               
+                // Update user role
+                await api.post(`/update_role/${user?.email}`, { role: 'pro_user' });
+
+                navigate('/');
+            } catch (saveError) {
+                console.error('Error saving payment data:', saveError);
+                Swal.fire({
+                    icon: 'error',
+                    text: 'There was an issue saving your payment data. Please contact support.',
+                    title: "Error!"
+                });
+            }
         } else {
             setError("Payment failed.");
         }
