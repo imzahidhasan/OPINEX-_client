@@ -52,7 +52,6 @@ const SurveyPage = () => {
           >
             <option value="totalVotes">Total Votes</option>
             <option value="createdAt">Date Created</option>
-            {/* Add more sorting options if needed */}
           </select>
         </div>
         <div>

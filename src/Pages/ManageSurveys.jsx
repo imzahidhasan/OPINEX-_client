@@ -5,7 +5,7 @@ import { MdArrowDropDown } from 'react-icons/md';
 import Swal from 'sweetalert2';
 
 const ManageSurveys = () => {
-  const { data, isLoading, isError, error,refetch } = useQuery({
+  const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ['surveys'],
     queryFn: async () => {
       const res = await api.get('/all_surveys')
@@ -45,29 +45,49 @@ const SurveyRow = ({ survey, refetch }) => {
   };
 
   const handleSubmit = async () => {
-    const formData = { id: survey._id, status: selectedStatus };
-    const result = await api.post("/update_survey_status", formData);
-
-    if (result.data.modifiedCount > 0) {
+    const { value: text } = await Swal.fire({
+      input: "textarea",
+      inputLabel: "Message",
+      inputPlaceholder: "Type your message here...",
+      inputAttributes: {
+        "aria-label": "Type your message here"
+      },
+      showCancelButton: true
+    });
+    if (!text) {
       Swal.fire({
-        icon: "success",
-        title: "Status Updated",
-        text: "Successfully updated the survey status",
-      });
-      refetch();
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Update Failed",
-        text: "Failed to update the survey status",
-      });
+        icon: 'info',
+        title: 'Not update!',
+        text:'you have to must give a feedback to unpublish this survey'
+      })
     }
-  };
+    if (text) {
+      const formData = { id: survey._id, status: selectedStatus, feedbackMessage: text };
+      console.log(formData);
+      const result = await api.post("/update_survey_status", formData);
+      if (result.data.modifiedCount > 0) {
+        Swal.fire({
+          icon: "success",
+          title: "Status Updated",
+          text: "Successfully updated the survey status",
+        });
+        refetch();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Update Failed",
+          text: "Failed to update the survey status",
+        });
+      }
+    };
+  }
+
+
 
   return (
     <tr className="hover:bg-gray-100">
       <td className="py-2 px-4 border-b">{survey.title}</td>
-      <td className="py-2 px-4 border-b">{`${survey.description.slice(0,40)}...`}</td>
+      <td className="py-2 px-4 border-b">{`${survey.description.slice(0, 40)}...`}</td>
       <td className="py-2 px-4 border-b">
         <div className="relative">
           <select

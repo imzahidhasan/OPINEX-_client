@@ -51,6 +51,7 @@ const FirebaseProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
             if (currentUser) {
+                console.log('User logged in:', currentUser);
                 setUser(currentUser);
                 const userInfo = {
                     name: currentUser.displayName,
@@ -59,15 +60,21 @@ const FirebaseProvider = ({ children }) => {
                 };
                 try {
                     const userExistResponse = await api.post('/is_user_exist', { email: currentUser.email });
+                    console.log('User existence response:', userExistResponse);
+
                     if (userExistResponse.data.userExist) {
                         setUserRole(userExistResponse.data.result.role);
                     } else {
-                        await api.post('/user', userInfo);
+                        const userCreationResponse = await api.post('/user', userInfo);
+                        console.log('User creation response:', userCreationResponse);
                         setUserRole(userInfo.role);
                     }
 
                     const jwtResponse = await api.post('/jwt', { email: currentUser.email });
+                    console.log('JWT response:', jwtResponse);
+
                     localStorage.setItem('token', jwtResponse.data.token);
+                    console.log('Token stored in localStorage');
                 } catch (error) {
                     console.error('Error during authentication state change handling:', error);
                 } finally {

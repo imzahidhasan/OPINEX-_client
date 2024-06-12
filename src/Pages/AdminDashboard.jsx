@@ -26,7 +26,7 @@ const AdminDashboard = () => {
                               </li>
                               <li>
                                   <NavLink to={'/dashboard/admin/payments'} className={({ isActive }) => isActive ? 'text-blue-500 font-bold' : 'text-gray-600 font-bold'}>
-                                     MAnage Payments
+                                      Payments
                                   </NavLink>
                               </li>
                           </ul>

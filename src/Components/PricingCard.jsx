@@ -1,7 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../Firebase/useAuth';
+import Swal from 'sweetalert2';
 
 const PricingCard = () => {
+    const { user } = useAuth()
+    const handlePurchese = (e) => {
+        Swal.fire({
+            icon: 'warning',
+            text: 'Please login to purchase this item',
+            title:'Login First'
+        })
+       
+    }
     return (
         <div className='my-5'>
             <div className="max-w-xs mx-auto border-2 border-gray-200 rounded-lg shadow-lg">
@@ -29,11 +40,15 @@ const PricingCard = () => {
                             <span className="text-red-500">✖</span>
                         </li>
                     </ul>
-                    <Link to="/payment">
-                        <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+                    {
+                        !user ? <button onClick={handlePurchese} className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
                             Purchase
-                        </button>
-                    </Link>
+                        </button> : <Link to="/payment">
+                            <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+                                Purchase
+                            </button>
+                        </Link>
+                   }
                 </div>
             </div>
         </div>
