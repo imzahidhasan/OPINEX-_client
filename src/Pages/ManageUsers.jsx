@@ -65,8 +65,7 @@ const ManageUsers = () => {
                     <thead>
                         <tr className="text-left">
                             <th className="py-2 px-4 border-b">Serial No.</th>
-                            <th className="py-2 px-4 border-b">Name</th>
-                            <th className="py-2 px-4 border-b">Email</th>
+                            <th className="py-2 px-4 border-b">User Email</th>
                             <th className="py-2 px-4 border-b">Role</th>
                             <th className="py-2 px-4 border-b">Action</th>
                         </tr>
@@ -106,7 +105,6 @@ const UserRow = ({ user,fetch, index }) => {
     return (
         <tr className="hover:bg-gray-100">
             <td className="py-2 px-4 border-b">{index}</td>
-            <td className="py-2 px-4 border-b">{user.name}</td>
             <td className="py-2 px-4 border-b">{user.email}</td>
             <td className="py-2 px-4 border-b">
                 <div className="relative">

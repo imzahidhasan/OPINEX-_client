@@ -6,7 +6,8 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 
 const RegisterPage = () => {
-  const { createUser, loginWithGoogle, setUser, UpdateProfile, user } = useAuth()
+  const { createUser, loginWithGoogle, setUser, UpdateProfile, } = useAuth()
+
   const navigate = useNavigate()
   const {
     register,
@@ -47,7 +48,6 @@ const RegisterPage = () => {
       if (userCredential.insertedId) {
         await UpdateProfile(name, img_url);
       }
-
       Swal.fire({
         title: 'Successful',
         text: 'Your account created successfully',

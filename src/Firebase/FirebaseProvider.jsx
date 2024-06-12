@@ -54,19 +54,16 @@ const FirebaseProvider = ({ children }) => {
              
                 setUser(currentUser);
                 const userInfo = {
-                    name: currentUser.displayName,
                     email: currentUser.email,
                     role: 'user'
                 };
                 try {
                     const userExistResponse = await api.post('/is_user_exist', { email: currentUser.email });
-                  
-
+                
                     if (userExistResponse.data.userExist) {
                         setUserRole(userExistResponse.data.result.role);
                     } else {
                         const userCreationResponse = await api.post('/user', userInfo);
-                        console.log('User creation response:', userCreationResponse);
                         setUserRole(userInfo.role);
                     }
 
