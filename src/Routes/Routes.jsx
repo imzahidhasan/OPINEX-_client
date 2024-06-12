@@ -22,6 +22,7 @@ import UserDashboard from "../Pages/UserDashboard";
 import UserParticipatedPage from "../Pages/UserParticipatedPage";
 import MyReportPage from "../Pages/MyReportPage";
 import UserComments from "../Pages/UserComments";
+import PaymentPage from "../Pages/PaymentPage";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
                 path: 'survey/details/:id',
                 element: <SurveyDetailsPage />
             },
+            {
+                path: 'payment',
+                element:<PaymentPage/>
+            }
 
         ],
 
